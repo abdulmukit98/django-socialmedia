@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Comment on {{ post.user.username }}'s post</h2>
+
+<img src="{{ post.image.url }}" width="300px">
+<p>{{ post.caption }}</p>
+<hr>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Comment</button>
+</form>
+{% endblock %}

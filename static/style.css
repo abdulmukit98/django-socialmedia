@@ -1,0 +1,74 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f9f9f9;
+    padding: 0;
+    margin: 0;   
+}
+
+.container {
+    max-width: 600px;  /* facebook feed width*/     
+    margin: auto;      /* place middle */
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+nav {
+    /* #DCA06D  */
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    /* margin-bottom: 20px; */
+    text-align: center;
+}
+
+nav a, nav button {
+    color: white;
+    margin-right: 10px;
+    text-decoration: none;
+    margin: 0 8px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+nav a:hover, nav button:hover {
+    text-decoration: underline;
+}
+
+form {
+    margin-top: 10px;
+}
+
+form textarea{
+    border-radius: 4px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.post {
+    background: #EAD196;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #A55B4B;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4F1C51;
+}

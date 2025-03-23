@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>All Posts</h2>
+{% for post in posts %}
+    <div class="post">
+        <p><strong>{{ post.user.username }}</strong> - {{ post.created_at }}</p>
+        <img src="{{ post.image.url }}" width="300px">
+        <p>{{ post.caption }}</p>
+        <p>Likes: {{ post.total_likes }}</p>
+
+        <!-- Like Unlike Button -->
+        <form action="{% url 'like_post' post.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">
+                {% if request.user in post.likes.all %}
+                    Unlike
+                {% else %}
+                    Like
+                {% endif %}
+            </button>
+        </form>
+
+        <!-- Show Comments -->
+        <h4>Comments:</h4>
+        {% for comment in post.comments.all %}
+            <p><strong>{{ comment.user.username }}</strong>: {{ comment.text }} </p>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+
+        <!-- Add Comment form -->
+        <form action="{% url 'add_comment' post.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- {{ form.as_p }} -->
+            <textarea name="text" rows="2" cols="40" placeholder="Write a comment..."></textarea>
+            <br>
+            <button type="submit">Comment</button>
+        </form>
+
+    </div>
+    <hr>
+{% endfor %}
+{% endblock %}
