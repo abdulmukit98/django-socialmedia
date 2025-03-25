@@ -6,6 +6,16 @@ from .forms import CustomUserCreationForm, EditProfileForm
 from posts.models import Post
 
 def register(request):
+    """
+    This function is used to hold the user account register functionality.
+
+    Args:
+        request (HttpRequest): The incoming http request.
+    
+    Returns:
+        HttpResponse: Renderd to register.html page with the required form data.
+    """
+
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
@@ -19,6 +29,16 @@ def register(request):
 
 
 def profile(request, username):
+    """
+    Display profile of a specific user.
+
+    Args:
+        request (HttpRequest): The incoming HTTP request.
+        username (str): The username of the profile to display.
+
+    Returns:
+        HttpResponse: Rendered template for the user profile.
+    """
     user = get_object_or_404(get_user_model(), username=username)
     posts = Post.objects.filter(user=user).order_by('-created_at')
     return render(request, 'users/profile.html', {'profile_user': user, 'posts': posts})
@@ -27,6 +47,15 @@ def profile(request, username):
 
 @login_required
 def edit_profile(request):
+    """
+    Allow user to update his profile data. Edit bio, image etc. Using the declared field in form the item is shown.
+
+    Args:
+        request (HttpRequest): The incoming HTTP request.
+    
+    Returns:
+        HttpResponse: Rendered template for the profile edit form page.
+    """
     if request.method == 'POST':
         form = EditProfileForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
