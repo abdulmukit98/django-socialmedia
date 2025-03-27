@@ -17,5 +17,20 @@ python manage.py runserver
 
 ### Docker run guide
 ```
+docker-compose down
 docker-compose up --build
 ```
+
+### Docker VS .venv
+
+* Running server locally need in **settings.py**
+```
+'HOST': localhost,
+```
+
+* But in using docker it is 
+```
+'HOST' : db, 
+// db is the postgres service name in docker-compose.yml file
+```
+
