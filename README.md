@@ -15,3 +15,7 @@ To run the application
 python manage.py runserver
 ```
 
+### Docker run guide
+```
+docker-compose up --build
+```

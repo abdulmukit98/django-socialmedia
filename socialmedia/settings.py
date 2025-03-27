@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dclevf!h9hha5vj9)2%9!)w#e(_9ax3b3c!bgw-*t&(5f9aht5'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'socialmedia.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'socialmedia_db',  # Your database name
-        'USER': 'socialmedia_user',  # Your database user
-        'PASSWORD': 'menthokol98',  # Your password
-        'HOST': 'localhost',  # Change if using a remote database
-        'PORT': '5432',  # Default PostgreSQL port
+        'NAME': os.environ.get("DB_NAME"),  # Your database name
+        'USER': os.environ.get("DB_USER"),  # Your database user
+        'PASSWORD': os.environ.get("DB_PASSWORD"),  # Your password
+        'HOST': os.environ.get("DB_HOST"),  # Change if using a remote database
+        'PORT': os.environ.get("DB_PORT"),  # Default PostgreSQL port
     }
 }
 
